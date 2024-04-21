@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Tour
+from .models import Category, Tour, Country
 from django.utils.safestring import mark_safe
 
 
@@ -23,4 +23,10 @@ class TourAdmin(admin.ModelAdmin):
 
 
     get_image.short_description = "Image"
+
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ("pk", "name")
+
 
