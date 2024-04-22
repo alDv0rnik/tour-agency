@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    {% load static %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -15,42 +16,17 @@
 <body class="d-flex flex-column min-vh-100">
 <header class="d-flex justify-content-center py-3 bg-dark">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link text-white">Главная</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-white">Туры</a></li>
+        <li class="nav-item"><a href="{% url 'home' %}" class="nav-link text-white">Главная</a></li>
+        <li class="nav-item"><a href="{% url 'catalog:tour_list' %}" class="nav-link text-white">Туры</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-white">О нас</a></li>
     </ul>
 </header>
-<div class="d-flex justify-content-center mt-5 py-3 text-white">
-    <h3>Куда едем?</h3>
-</div>
-<div class="w-25 modal-body p-4 mx-auto">
-    <form action="{% url 'catalog:search_tour' %}" method="post" autocomplete="off">
-        {% csrf_token %}
-        <div class="form-floating mb-3">
-            <select class="form-select rounded-3" name="countries" id="select" style="padding-top: 10px">
-                <option value="">Страна...</option>
-                {% for country in countries %}
-                    <option value="{{ country.name }}">{{ country.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="durationForm" name="duration" placeholder="Кол-во дней">
-            <label for="durationForm">Кол-во дней</label>
-        </div>
-        <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" value="True" id="checkbox1" name="is_family">
-            <label class="form-check-label text-light" for="checkbox1">Едем всей семьей</label>
-        </div>
-        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-warning" type="submit">Найти</button>
-    </form>
-</div>
 {% block content %}
 {% endblock %}
 <footer class="footer bg-dark py-2 mt-auto">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Домой</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">О нас</a></li>
     </ul>
     <p class="text-center text-light">© 2024 Tour Agency, Inc</p>
 </footer>
