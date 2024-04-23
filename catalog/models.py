@@ -71,3 +71,15 @@ class Tour(models.Model):
         verbose_name = "Tour"
         verbose_name_plural = "Tours"
         ordering = ["name"]
+
+
+class TourPhotos(models.Model):
+    image = models.ImageField("Image", upload_to="movies/screenshots")
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name="tour_photos", null=True, blank=True)
+
+    created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name="Updated at", auto_now=True)
+
+    class Meta:
+        verbose_name = "Screenshot"
+        verbose_name_plural = "Screenshots"

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container bg-light py-5 my-5 border border-light rounded-3" style=
+            "max-width: 1000px;">
+        <div class="row">
+            <div class="col-lg-6 ps-5">
+                <img src="{{ tour.image.url }}" class="img-fluid" alt="Tour Image">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold">{{ tour.name }}</h2>
+                <p class="text-muted">{{ tour.category.name }}</p>
+                <h3 class="my-2">BYN {{ tour.price }}</h3>
+                {% if tour.is_family %}
+                    <p class="mb-2">Можно всей семьей</p>
+                {% else %}
+                    <p class="mb-2">Рекомендовано для поездки с друзьями</p>
+                {% endif %}
+                <button class="btn btn-outline-dark mt-2">Оформить поездку</button>
+            </div>
+        </div>
+        <ul class="nav nav-tabs mt-5" id="productTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description"
+                        type="button" role="tab" aria-controls="description" aria-selected="true">Описание
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button"
+                        role="tab" aria-controls="specs" aria-selected="false">Фотографии
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button"
+                        role="tab" aria-controls="reviews" aria-selected="false">Отзывы
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="productTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <p class="m-3">
+                    {{ tour.description }}
+                </p>
+            </div>
+            <div class="tab-pane fade" id="specs" role="tabpanel" aria-labelledby="specs-tab">
+                {% with photos=tour_photos %}
+                    <div class="row m-2 ">
+                        {% for photo in photos %}
+                                <div class="col-lg-6 p-5">
+                                    <img src="{{ photo.image.url }}" class="img-fluid" alt="Tour Image">
+                                </div>
+                        {% endfor %}
+                    </div>
+                {% endwith %}
+            </div>
+            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                <div class="m-3">
+                    <h5>Коля Шпиц:</h5>
+                    <p>Ездили с друзьями! Супер впечатления! Рекомендую!</p>
+                    <h5>Михаил Шуфутинский:</h5>
+                    <p>Отличное вышло приключение</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

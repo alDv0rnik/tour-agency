@@ -8,7 +8,8 @@ from catalog.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
-    path('catalog/', include('catalog.urls', namespace='catalog'))
+    path('catalog/', include('catalog.urls', namespace='catalog')),
+    path('orders/', include('orders.urls', namespace='orders'))
 ]
 
 if settings.DEBUG:
