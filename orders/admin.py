@@ -9,4 +9,4 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderInfo)
 class OrderInfoAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'shipping_address')
+    list_display = ('first_name', 'last_name', 'email', 'phone')

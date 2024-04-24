@@ -17,7 +17,7 @@
                 {% else %}
                     <p class="mb-2">Рекомендовано для поездки с друзьями</p>
                 {% endif %}
-                <button class="btn btn-outline-dark mt-2">Оформить поездку</button>
+                <button class="btn btn-outline-dark mt-2" onclick="window.location.href='{% url 'orders:create_order' tour.slug %}'">Оформить поездку</button>
             </div>
         </div>
         <ul class="nav nav-tabs mt-5" id="productTab" role="tablist">

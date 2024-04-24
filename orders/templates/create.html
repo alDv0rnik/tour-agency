@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <section class="w-50 mb-4 ms-auto me-auto mt-4">
+        <div class="border rounded-3">
+            <section class="px-3 py-5" style="background-color: white">
+                <div class="mt-2">
+                    <h3 class="mb-2 mt-2" style="text-align: center;">Информация о поездке</h3>
+                    <p class="mb-4" style="text-align: center;">Оплата вноситься после согласования с нашим
+                        менеджером</p>
+                    <div class="row ms-2 me-2">
+                        <div class="col p-2">
+                            <form action="{% url 'orders:create_order' tour.slug %}" method="post">
+                                <div class="col-md-12">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                </div>
+                                <div class="col-md-12">
+                                    {{ date_form.as_p }}
+                                </div>
+                                <button class="btn btn-outline-dark" type="submit" style="width: 300px;">Подтвердить
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col p-2">
+                            <div class="border border-dark rounded-3 me-4">
+                                <div class="p-3">
+                                    <h3>{{ tour.name }}</h3>
+                                    <p>{{ tour.category.name }}</p>
+                                    <p>{{ tour.destination.name }} ({{ tour.city }})</p>
+                                    <h4>BYN {{ tour.price }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}

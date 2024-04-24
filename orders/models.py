@@ -38,9 +38,9 @@ class OrderInfo(models.Model):
     first_name = models.CharField(verbose_name='First Name', max_length=50)
     last_name = models.CharField(verbose_name='Last Name', max_length=100)
     email = models.EmailField(verbose_name='Email', max_length=100)
-    shipping_address = models.CharField(verbose_name='Shipping Address', max_length=200, blank=True)
+    phone = models.CharField(verbose_name='Phone', max_length=200, blank=True)
     city = models.CharField(verbose_name='City', max_length=50, blank=True)
-    postal_code = models.CharField(verbose_name='Postal Code', max_length=10, blank=True)
+    members = models.PositiveIntegerField(verbose_name='Members', default=1)
 
     def __str__(self):
         return f"Order info - {self.order.pk}: {self.first_name} {self.last_name}"
