@@ -20,7 +20,9 @@ def create_order(request, tour_slug):
                 email=form.cleaned_data['email'],
                 phone=form.cleaned_data['phone'],
                 city=form.cleaned_data['city'],
-                members=form.cleaned_data['members']
+                members=form.cleaned_data['members'],
+                date_from=date_form.cleaned_data['date_from'],
+                date_to=date_form.cleaned_data['date_to']
             )
             return render(request, "created.html", {"order": order})
     else:

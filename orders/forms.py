@@ -15,7 +15,7 @@ class OrderInfoEditForm(forms.ModelForm):
     class Meta:
         model = OrderInfo
         fields = '__all__'
-        exclude = ['order']
+        exclude = ['order','date_from', 'date_to']
         labels = {
             'first_name': '',
             'last_name': '',

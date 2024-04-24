@@ -42,6 +42,9 @@ class OrderInfo(models.Model):
     city = models.CharField(verbose_name='City', max_length=50, blank=True)
     members = models.PositiveIntegerField(verbose_name='Members', default=1)
 
+    date_from = models.DateField(verbose_name='Start date', blank=True, null=True)
+    date_to = models.DateField(verbose_name='End date', blank=True, null=True)
+
     def __str__(self):
         return f"Order info - {self.order.pk}: {self.first_name} {self.last_name}"
 
